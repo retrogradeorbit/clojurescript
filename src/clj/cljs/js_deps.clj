@@ -87,7 +87,8 @@ case."
     (if (.exists file)
       (find-js-fs path)
       (do
-        (println "WARNING: js resource path" path "does not exist")
+        (binding [*out* *err*]
+          (println "WARNING: js resource path" path "does not exist"))
         (find-js-classpath path)))))
 
 (defn parse-js-ns
